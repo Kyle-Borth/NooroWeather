@@ -12,7 +12,7 @@ A simple application to search for a location and see its current weather.
 
 ## WeatherAPI.com API Key
 
-This app requires and API Key provide by WeatherAPI.com to function properly. 
+This app requires and API Key provided by WeatherAPI.com to function properly. 
 
 1. If you have not done so already, create an account here https://www.weatherapi.com/signup.aspx
 2. Once you are logged in, your API key can be found at the top of your profile screen
