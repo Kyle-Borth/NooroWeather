@@ -2,6 +2,7 @@ package com.nooro.weather.api
 
 import android.util.Log
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.nooro.weather.BuildConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
@@ -14,9 +15,6 @@ import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton
-
-//TODO Find a better place to put this
-private const val API_KEY = "7e683b9f44d747fca5c170856241612"
 
 private const val BASE_URL = "https://api.weatherapi.com/v1/"
 
@@ -39,16 +37,18 @@ class WeatherNetworkService @Inject constructor() {
             .create(WeatherApi::class.java)
     }
 
+    private val apiKey = BuildConfig.WEATHER_API_KEY
+
     suspend fun getLocations(searchTerm: String) = wrapRequest {
-        weatherApi.getLocations(apiKey = API_KEY, searchTerm = searchTerm)
+        weatherApi.getLocations(apiKey = apiKey, searchTerm = searchTerm)
     }
 
     suspend fun getLocation(locationId: Int) = wrapRequest {
-        weatherApi.getLocation(apiKey = API_KEY, locationId = "id:$locationId")
+        weatherApi.getLocation(apiKey = apiKey, locationId = "id:$locationId")
     }
 
     suspend fun getCurrentWeather(locationId: Int) = wrapRequest {
-        weatherApi.getCurrentWeather(apiKey = API_KEY, locationId = "id:$locationId")
+        weatherApi.getCurrentWeather(apiKey = apiKey, locationId = "id:$locationId")
     }
 
     private fun buildOkHttpClient(timeoutSeconds: Long = 10L) = OkHttpClient.Builder().apply {
