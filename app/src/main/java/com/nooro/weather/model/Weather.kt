@@ -15,7 +15,7 @@ data class Weather(
     @SerialName("uv") val uvIndex: Double
 ) {
     //TODO app should allow user to choose F or C
-    val temperature: String get() = "${(temperatureInFahrenheit + 0.5).toInt()}°"
+    val temperature: String get() = (temperatureInFahrenheit + 0.5).toInt().toString()
 
     val feelsLike: String get() = "${(feelsLikeFahrenheit + 0.5).toInt()}°"
 
